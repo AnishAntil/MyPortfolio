@@ -31,47 +31,46 @@
 
     <!-- Enhanced Hero Section -->
     <section class="hero" id="about">
+        <!-- Hero Overlay for subtle gradient/texture -->
+        <div class="hero-overlay"></div>
         <div class="particles-container" id="particles-js"></div>
         <div class="hero-wrapper">
             <div class="hero-content">
                 <div class="hero-image">
-                    <div class="hero-image-frame">
-                        <img src="images/PROFILEP.png" alt="Anish Kumar - Full-Stack Developer" />
+                    <div class="hero-image-frame fade-in">
+                        <img src="images/PROFILEP.jpg" alt="Anish Kumar - Full-Stack Developer" />
                     </div>
-                    <div class="hero-image-shape"></div>
+                    <div class="hero-image-shape fade-in"></div>
                 </div>
                 <div class="hero-text">
-                    <div class="hero-subtitle">Hello, I'm</div>
-                    <h1 class="hero-title">Anish Kumar</h1>
-                    <h2 class="hero-role">
+                    <div class="hero-subtitle fade-in">Hello, I'm</div>
+                    <h1 class="hero-title fade-in">Anish Kumar</h1>
+                    <h2 class="hero-role fade-in">
                         <span class="txt-rotate" data-period="2000" data-rotate='[ "Full-Stack Developer", "Web Developer", "UI Designer", "Computer Science Student" ]'></span>
                     </h2>
-                    <p>
+                    <p class="fade-in">
                         Innovative Computer Science student with experience in building responsive web applications using modern technologies. Passionate about creating clean, efficient, and user-friendly digital experiences.
                     </p>
-                    <div class="hero-cta">
+                    <div class="hero-cta fade-in">
                         <a href="anish_resume.pdf" download="anish_resume.pdf" class="btn-primary">
-                <i class="fas fa-download"></i> Download Resume
-              </a>
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
                         <a href="#contact" class="btn-secondary">
-                <i class="fas fa-envelope"></i> Let's Connect
-              </a>
+                            <i class="fas fa-envelope"></i> Let's Connect
+                        </a>
                     </div>
-                    <div class="hero-social">
-                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i
-              ></a>
-                        <a href="https://leetcode.com/profile/" target="_blank" class="social-icon"><img
-                  src="images/leet.webp"
-                  alt="LeetCode"
-                  class="leetcode-icon"
-              /></a>
-                        <a href="https://github.com/AnishAntil" target="_blank" class="social-icon"><i class="fab fa-github"></i
-              ></a>
+                    <div class="hero-social fade-in">
+                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://leetcode.com/profile/" target="_blank" class="social-icon">
+                            <!-- Corrected LeetCode image usage within social-icon -->
+                            <img src="images/leet.webp" alt="LeetCode" class="leetcode-icon" />
+                        </a>
+                        <a href="https://github.com/AnishAntil" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-scroll">
+        <div class="hero-scroll fade-in">
             <a href="#skills">
                 <div class="mouse-icon">
                     <div class="mouse-wheel"></div>
@@ -81,90 +80,101 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section class="skills-section" id="skills">
+        <div class="svg-divider top-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
         <div class="container">
-            <h2 class="section-title"><span>Technical Skills</span></h2>
+            <h2 class="section-title fade-in"><span>Technical Skills</span></h2>
 
-            <div class="skills-category">
+            <div class="skills-category fade-in">
                 <h3>Frontend Development</h3>
                 <div class="skills-grid">
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/react.png" alt="React.js" />
                         <span>React.js</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/nextjslogo.png" alt="Next.js" />
                         <span>Next.js</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/taillogo.png" alt="Tailwind CSS" />
                         <span>Tailwind CSS</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/htmllogo.png" alt="HTML5" />
                         <span>HTML5</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/csslogo.png" alt="CSS3" />
                         <span>CSS3</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/jslogo.png" alt="JavaScript" />
                         <span>JavaScript</span>
                     </div>
                 </div>
             </div>
 
-            <div class="skills-category">
+            <div class="skills-category fade-in">
                 <h3>Backend & Database</h3>
                 <div class="skills-grid">
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/firebase.png" alt="Firebase" />
                         <span>Firebase</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/mysqllogo.png" alt="MySQL" />
                         <span>MySQL</span>
                     </div>
                 </div>
             </div>
 
-            <div class="skills-category">
+            <div class="skills-category fade-in">
                 <h3>Programming Languages</h3>
                 <div class="skills-grid">
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/javalogo.png" alt="Java" />
                         <span>Java</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/pythonlogo.webp" alt="Python" />
                         <span>Python</span>
                     </div>
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/clogo.png" alt="C" />
                         <span>C</span>
                     </div>
                 </div>
             </div>
 
-            <div class="skills-category">
+            <div class="skills-category fade-in">
                 <h3>Cloud & DevOps</h3>
                 <div class="skills-grid">
-                    <div class="skill-card">
+                    <div class="skill-card fade-in">
                         <img src="images/awslogo.png" alt="AWS" />
                         <span>AWS</span>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="svg-divider bottom-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
     </section>
 
     <!-- Optimized Project Section -->
     <section class="projects-section" id="projects">
         <div class="container">
-            <h2 class="section-title"><span>Featured Projects</span></h2>
+            <h2 class="section-title fade-in"><span>Featured Projects</span></h2>
 
-            <div class="projects-filter">
+            <div class="projects-filter fade-in">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="web">Web Apps</button>
                 <button class="filter-btn" data-filter="desktop">Desktop</button>
@@ -173,47 +183,24 @@
 
             <div class="projects-grid">
                 <!-- STUDENT RESULT MANAGEMENT SYSTEM -->
-                <div class="project-card" data-category="web">
+                <div class="project-card fade-in" id="srms-project" data-category="web">
                     <div class="project-slider">
                         <div class="project-slider-inner">
-                            <div class="slider-item">
-                                <img src="images/SRMS1.png" alt="STUDENT RESULT MANAGEMENT SYSTEM" />
-                            </div>
-                            <div>
-                                <img src="images/SRMS2.png" alt="STUDENT RESULT MANAGEMENT SYSTEM INTERFACE" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS3.png" alt="MANAGE STUDENT" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS4.png" alt="CREATE STUDENT CLASS" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS5.png" alt="MANAGE CLASSES" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS6.png" alt="STUDENT RESULT" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS1.png" alt="STUDENT RESULT MANAGEMENT SYSTEM" />
-                            </div>
-                            <div>
-                                <img src="images/SRMS2.png" alt="STUDENT RESULT MANAGEMENT SYSTEM INTERFACE" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS3.png" alt="MANAGE STUDENT" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/SRMS4.png" alt="CREATE STUDENT CLASS" />
-                            </div>
+                            <img src="images/SRMS1.png" alt="LOGIN" />
+                            <img src="images/SRMS2.png" alt="DASHBOARD" />
+                            <img src="images/SRMS3.png" alt="CREATE STUDENT CLASS" />
+                            <img src="images/SRMS4.png" alt="MANAGE CLASSES" />
+                            <img src="images/SRMS5.png" alt="MANAGE STUDENTS" />
+                            <img src="images/SRMS6.png" alt="STUDENT RESULT MANAGEMENT SYSTEM" />
+                            <img src="images/SRMS7.png" alt="STUDENT RESULT" />
                         </div>
                         <div class="slider-controls">
                             <button class="slider-prev">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
                             <button class="slider-next">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <div class="slider-dots"></div>
                     </div>
@@ -229,53 +216,34 @@
                             A Student Result Management System is a software application that efficiently records, processes, and displays student academic results, ensuring accurate and organized performance tracking.
                         </p>
                         <div class="project-links">
-    
-                </a>
                             <a href="https://github.com/AnishAntil/StudentResult" target="_blank" class="btn-link">
-                  <i class="fab fa-github"></i> GitHub
-                </a>
-                
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-link" data-project="srms-project">
+                                <i class="fas fa-images"></i> View Gallery
+                            </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- BREAK OUT BALL GAME -->
-                <div class="project-card" data-category="desktop">
+                <div class="project-card fade-in" id="breakout-game" data-category="desktop">
                     <div class="project-slider">
                         <div class="project-slider-inner">
-                            <div class="slider-item">
-                                <img src="images/BBG4.jpg" alt="BREAK OUT BALL GAME" />
-                            </div>
-
-                            <div class="slider-item">
-                                <img src="images/BBG1.jpg" alt="Game START" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/BBG2.jpg" alt="ONGOING" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/BBG4.jpg" alt="YOU WON" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/BBG5.jpg" alt="ER MODEL" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/BBG6.jpg" alt="GAME OVER" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/BBG6.jpg" alt="Game START" />
-                            </div>
-                            <div class="slider-item">
-                                <img src="images/BBG4.jpg" alt="ONGOING" />
-                            </div>
+                            <img src="images/BBG4.jpg" alt="BREAK OUT BALL GAME" />
+                            <img src="images/BBG1.jpg" alt="Game START" />
+                            <img src="images/BBG2.jpg" alt="ONGOING" />
+                            <img src="images/BBG3.jpg" alt="ONGOING" />
+                            <img src="images/BBG5.jpg" alt="ER MODEL" />
+                            <img src="images/BBG6.jpg" alt="GAME OVER" />
                         </div>
                         <div class="slider-controls">
                             <button class="slider-prev">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
                             <button class="slider-next">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <div class="slider-dots"></div>
                     </div>
@@ -291,49 +259,175 @@
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/AnishAntil/Brick_Breaker_Game" target="_blank" class="btn-link">
-                  <i class="fab fa-github"></i> GitHub
-                </a>
-                           
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-link" data-project="breakout-game">
+                                <i class="fas fa-images"></i> View Gallery
+                            </button>
                         </div>
                     </div>
                 </div>
 
-            
+                <!-- Advanced Notes App - Java Desktop Application -->
+                <div class="project-card fade-in" id="note-app" data-category="desktop">
+                    <div class="project-slider">
+                        <div class="project-slider-inner">
+                            <img src="images/AN1.png" alt="NoteApp Interface" />
+                            <img src="images/AN2.png" alt="Tags Feature" />
+                            <img src="images/AN3.png" alt="NoteApp Features" />
+                            <img src="images/AN4.png" alt="Example" />
+                            <img src="images/AN5.png" alt="Notes Created" />
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Advanced Notes App</h3>
+                        <div class="project-tags">
+                            <span>Java</span>
+                            <span>Swing</span>
+                            <span>Desktop App</span>
+                        </div>
+                        <p>
+                            About
+A modern, smooth, and feature-rich note-taking web application built with vanilla HTML, CSS, and JavaScript. It includes a responsive UI, dark mode, rich-text editing, and a powerful search with live suggestions.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://advanced-notes-app-pi.vercel.app/" target="_blank" class="btn-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
 
-               
-            <div class="view-more-container">
+                            <a href="https://github.com/AnishAntil/Advanced-Notes-App" target="_blank" class="btn-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-link" data-project="note-app">
+                                <i class="fas fa-images"></i> View Gallery
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TO-DO List Web Application -->
+                <div class="project-card fade-in" id="todo-app" data-category="web">
+                    <div class="project-slider">
+                        <div class="project-slider-inner">
+                            <img src="images/TDL1.png" alt="TO-DO List Login Page" />
+                            <img src="images/TDL2.png" alt="TO-DO List" />
+                            <img src="images/TDL3.png" alt="TO-DO List Active Task" />
+                            <img src="images/TDL4.png" alt="TO-DO List Completed Task" />
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>TO-DO List Web Application</h3>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Local Storage</span>
+                        </div>
+                        <p>
+                            My To-Do App A simple and modern to-do list web application built with Next.js, React, and Tailwind CSS. The app features real-time data persistence using Firebase Firestore and a seamless user experience with anonymous authentication.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://my-todo-app-kappa-hazel.vercel.app/" target="_blank" class="btn-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/AnishAntil/my-todo-app" target="_blank" class="btn-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-link" data-project="todo-app">
+                                <i class="fas fa-images"></i> View Gallery
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive UI Components -->
+                <div class="project-card fade-in" id="ui-components" data-category="ui">
+                    <div class="project-slider">
+                        <div class="project-slider-inner">
+                            <img src="images/ui sample.png" alt="Interactive UI Sample 1" />
+                            <img src="images/ui sample2.png" alt="Interactive UI Sample 2" />
+                        </div>
+                        <div class="slider-controls">
+                            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="slider-dots"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Interactive UI Components</h3>
+                        <div class="project-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>UI/UX</span>
+                        </div>
+                        <p>
+                            A collection of modern and interactive UI components designed to enhance user experience. Includes custom sliders, buttons, and form elements.
+                        </p>
+                        <div class="project-links">
+                            <a href="#" class="btn-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/AnishAntil/Interactive-UI-components" target="_blank" class="btn-link">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn-link" data-project="ui-components">
+                                <i class="fas fa-images"></i> View Gallery
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="view-more-container fade-in">
                 <a href="https://github.com/AnishAntil" target="_blank" class="btn-primary">
-            View More on GitHub <i class="fab fa-github"></i>
-          </a>
+                    View More on GitHub <i class="fab fa-github"></i>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Project Gallery Modal -->
-    <div class="project-gallery-modal">
+    <div id="projectGalleryModal" class="project-gallery-modal">
         <div class="gallery-modal-content">
             <span class="gallery-close">&times;</span>
             <h3 class="gallery-title">Project Gallery</h3>
             <div class="gallery-container">
-                <!-- Images will be loaded here dynamically -->
+                <!-- Images will be loaded here dynamically by JS -->
             </div>
             <div class="gallery-navigation">
                 <button class="gallery-prev">
-            <i class="fas fa-chevron-left"></i>
-          </button>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="gallery-dots"></div>
                 <button class="gallery-next">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- Education & Experience Section -->
     <section class="timeline-section" id="education">
+        <div class="svg-divider top-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
         <div class="container">
-            <h2 class="section-title"><span>Education & Experience</span></h2>
+            <h2 class="section-title fade-in"><span>Education & Experience</span></h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>B.Tech in Computer Science Engineering</h3>
@@ -345,7 +439,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>Frontend Developer Intern</h3>
@@ -357,7 +451,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>SRM BUILDS 5.0 X FINTECH</h3>
@@ -369,16 +463,16 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>Web Development Training</h3>
-                        <h4>CIIE, SRM University</h4>
+                        <p>"Completed a comprehensive web development training program at Infosys, gaining hands-on expertise in building full-stack applications. The curriculum provided a strong foundation in core technologies such as HTML, CSS, JavaScript, and Java, with a focus on real-world, project-based application development."</p>
                         <p class="timeline-date">July 2024 - August 2024</p>
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>CBSE Senior Secondary</h3>
@@ -388,7 +482,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>CBSE Secondary</h3>
@@ -399,95 +493,65 @@
                 </div>
             </div>
         </div>
+        <div class="svg-divider bottom-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
-            <h2 class="section-title"><span>Contact</span></h2>
-            <!-- <div class="contact-container"> -->
+            <h2 class="section-title fade-in"><span>Get In Touch</span></h2>
 
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <div>
-                    <h3>Email</h3>
-                    <p>
-                        <a href="mailto:anishantil01@gmail.com">anishantil01@gmail.com</a
-              >
-            </p>
-          </div>
-        </div>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:anishantil01@gmail.com">anishantil01@gmail.com</a></p>
+                        </div>
+                    </div>
 
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <div>
-            <h3>Location</h3>
-            <p>Sonipat,Haryana,India</p>
-          </div>
-        </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Sonipat, Haryana, India</p>
+                        </div>
+                    </div>
 
-        <div class="social-links">
-          <a
-            href="https://www.linkedin.com/in/anish-kumar-57a538356/"
-            target="_blank"
-            class="social-icon"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-                        <a href="https://leetcode.com/profile/" target="_blank" class="social-icon"><img
-              src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
-              alt="LeetCode"
-              class="leetcode-icon"
-          /></a>
-                        <a href="https://github.com/AnishAntil" target="_blank" class="social-icon"><i class="fab fa-github"></i
-          ></a>
-
+                    <div class="social-links fade-in">
+                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://leetcode.com/profile/" target="_blank" class="social-icon">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" class="leetcode-icon" />
+                        </a>
+                        <a href="https://github.com/AnishAntil" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
-               <section class="contact-section" id="contact">
-  <div class="container">
-    <h2 class="section-title"><span>Get In Touch</span></h2>
-
-    <div class="contact-items">
-      <div class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <div>
-          <h3>Email</h3>
-          <p><a href="mailto:anishantil01@gmail.com">anishantil01@gmail.com</a></p>
-        </div>
-      </div>
-
-      
-    </div>
-
-    <div class="social-links">
-      <!-- Social Icons -->
-    </div>
-
-    <!-- ✅ Proper spacing before form -->
-    <div class="contact-form" style="margin-top: 2rem;">
-      <form action="https://formsubmit.co/anishantil01@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false" />
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required />
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" required />
-        </div>
-        <div class="form-group">
-          <input type="text" name="subject" placeholder="Subject" />
-        </div>
-        <div class="form-group">
-          <textarea name="message" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
-    </div>
-
-  </div>
-</section>
-
-</div>
-
+                <div class="contact-form fade-in" id="contactForm">
+                    <form action="https://formsubmit.co/anishantil01@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false" />
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Subject" />
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
             </div>
+        </div>
     </section>
 
     <footer>
@@ -496,15 +560,14 @@
         </div>
     </footer>
 
-    <!-- Modal for enlarged image -->
-    <div id="modal" class="modal">
-        <span class="close" id="close-modal">&times;</span>
-        <img class="modal-content" id="modal-img" />
-    </div>
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
-    
+
 </body>
 
 </html>
