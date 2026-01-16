@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ANISH KUMAR | Full-Stack Developer</title>
-    <meta name="google-site-verification" content="YXEbV1UFMh_6a7SIZyc92EkVoICuC_tDjHy92iPF5CY" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -30,7 +29,9 @@
         </div>
     </header>
 
+    <!-- Enhanced Hero Section -->
     <section class="hero" id="about">
+        <!-- Hero Overlay for subtle gradient/texture -->
         <div class="hero-overlay"></div>
         <div class="particles-container" id="particles-js"></div>
         <div class="hero-wrapper">
@@ -58,12 +59,13 @@
                             <i class="fas fa-envelope"></i> Let's Connect
                         </a>
                     </div>
-                    <div class="hero-social fade-in">
-                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://leetcode.com/u/AnishAntil/" target="_blank" class="social-icon">
+                   <div class="hero-social fade-in">
+                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" rel="noopener noreferrer" title="Visit my LinkedIn profile" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" title="Visit my LeetCode profile" class="social-icon">
+                            
                             <img src="images/leet.webp" alt="LeetCode" class="leetcode-icon" />
                         </a>
-                        <a href="https://github.com/AnishAntil" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" title="Visit my GitHub profile" class="social-icon"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
@@ -78,6 +80,7 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section class="skills-section" id="skills">
         <div class="svg-divider top-divider">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -166,6 +169,7 @@
         </div>
     </section>
 
+    <!-- Optimized Project Section -->
     <section class="projects-section" id="projects">
         <div class="container">
             <h2 class="section-title fade-in"><span>Featured Projects</span></h2>
@@ -178,6 +182,7 @@
             </div>
 
             <div class="projects-grid">
+                <!-- STUDENT RESULT MANAGEMENT SYSTEM -->
                 <div class="project-card fade-in" id="srms-project" data-category="web">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -190,10 +195,10 @@
                             <img src="images/SRMS7.png" alt="STUDENT RESULT" />
                         </div>
                         <div class="slider-controls">
-                            <button class="slider-prev">
+                            <button class="slider-prev" title="Previous slide" aria-label="Previous slide">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="slider-next">
+                            <button class="slider-next" title="Next slide" aria-label="Next slide">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
@@ -211,7 +216,7 @@
                             A Student Result Management System is a software application that efficiently records, processes, and displays student academic results, ensuring accurate and organized performance tracking.
                         </p>
                         <div class="project-links">
-                            <a href="https://github.com/AnishAntil/StudentResult" target="_blank" class="btn-link">
+                            <a href="https://github.com/AnishAntil/StudentResult" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                             <button class="btn-link" data-project="srms-project">
@@ -221,6 +226,7 @@
                     </div>
                 </div>
 
+                <!-- BREAK OUT BALL GAME -->
                 <div class="project-card fade-in" id="breakout-game" data-category="desktop">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -232,10 +238,10 @@
                             <img src="images/BBG6.jpg" alt="GAME OVER" />
                         </div>
                         <div class="slider-controls">
-                            <button class="slider-prev">
+                            <button class="slider-prev" title="Previous slide" aria-label="Previous slide">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="slider-next">
+                            <button class="slider-next" title="Next slide" aria-label="Next slide">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
@@ -252,7 +258,7 @@
                             Breakout is a classic arcade game where players control a paddle to bounce a ball and break bricks.
                         </p>
                         <div class="project-links">
-                            <a href="https://github.com/AnishAntil/Brick_Breaker_Game" target="_blank" class="btn-link">
+                            <a href="https://github.com/AnishAntil/Brick_Breaker_Game" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                             <button class="btn-link" data-project="breakout-game">
@@ -262,6 +268,7 @@
                     </div>
                 </div>
 
+                <!-- Advanced Notes App - Java Desktop Application -->
                 <div class="project-card fade-in" id="note-app" data-category="desktop">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -272,8 +279,12 @@
                             <img src="images/AN5.png" alt="Notes Created" />
                         </div>
                         <div class="slider-controls">
-                            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                            <button class="slider-prev" title="Previous slide" aria-label="Previous slide">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-next" title="Next slide" aria-label="Next slide">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                         <div class="slider-dots"></div>
                     </div>
@@ -289,10 +300,10 @@
 A modern, smooth, and feature-rich note-taking web application built with vanilla HTML, CSS, and JavaScript. It includes a responsive UI, dark mode, rich-text editing, and a powerful search with live suggestions.
                         </p>
                         <div class="project-links">
-                            <a href="https://advanced-notes-app-pi.vercel.app/" target="_blank" class="btn-link">
+                            <a href="https://advanced-notes-app-pi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
-                            <a href="https://github.com/AnishAntil/Advanced-Notes-App" target="_blank" class="btn-link">
+                            <a href="https://github.com/AnishAntil/Advanced-Notes-App" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                             <button class="btn-link" data-project="note-app">
@@ -302,6 +313,7 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                     </div>
                 </div>
 
+                <!-- TO-DO List Web Application -->
                 <div class="project-card fade-in" id="todo-app" data-category="web">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -311,8 +323,8 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                             <img src="images/TDL4.png" alt="TO-DO List Completed Task" />
                         </div>
                         <div class="slider-controls">
-                            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                            <button class="slider-prev" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                            <button class="slider-next" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
                         </div>
                         <div class="slider-dots"></div>
                     </div>
@@ -328,10 +340,10 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                             My To-Do App A simple and modern to-do list web application built with Next.js, React, and Tailwind CSS. The app features real-time data persistence using Firebase Firestore and a seamless user experience with anonymous authentication.
                         </p>
                         <div class="project-links">
-                            <a href="https://my-todo-app-kappa-hazel.vercel.app/" target="_blank" class="btn-link">
+                            <a href="https://my-todo-app-kappa-hazel.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
-                            <a href="https://github.com/AnishAntil/my-todo-app" target="_blank" class="btn-link">
+                            <a href="https://github.com/AnishAntil/my-todo-app" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
                             <button class="btn-link" data-project="todo-app">
@@ -341,20 +353,28 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                     </div>
                 </div>
 
-                <div class="project-card fade-in" id="ui-components" data-category="ui">
+                <!-- Food Ordering application -->
+                <div class="project-card fade-in" id="ordering-app" data-category="ui">
                     <div class="project-slider">
                         <div class="project-slider-inner">
-                            <img src="images/ui sample.png" alt="Interactive UI Sample 1" />
-                            <img src="images/ui sample2.png" alt="Interactive UI Sample 2" />
+                            <img src="images/FOA1.png" alt="Food ordering application 1" />
+                            <img src="images/FOA2.png" alt="Interactive UI Sample 2" />
+                            <img src="images/FOA3.png" alt="Interactive UI Sample 2" />
+                            <img src="images/FOA4.png" alt="Interactive UI Sample 2" />
+                            <img src="images/FOA5.png" alt="Interactive UI Sample 2" />
                         </div>
                         <div class="slider-controls">
-                            <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+                            <button class="slider-prev" aria-label="Previous slide">
+                                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                            </button>
+                            <button class="slider-next" aria-label="Next slide">
+                                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                            </button>
                         </div>
                         <div class="slider-dots"></div>
                     </div>
                     <div class="project-content">
-                        <h3>Interactive UI Components</h3>
+                        <h3>Food Ordering Application</h3>
                         <div class="project-tags">
                             <span>HTML</span>
                             <span>CSS</span>
@@ -365,13 +385,13 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                             A collection of modern and interactive UI components designed to enhance user experience. Includes custom sliders, buttons, and form elements.
                         </p>
                         <div class="project-links">
-                            <a href="#" class="btn-link">
+                            <a href="https://ttc.tanmaynandwana.in/home" class="btn-link">
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
-                            <a href="https://github.com/AnishAntil/Interactive-UI-components" target="_blank" class="btn-link">
+                            <a href="https://github.com/AnishAntil/Interactive-UI-components" target="_blank" rel="noopener noreferrer" class="btn-link">
                                 <i class="fab fa-github"></i> GitHub
                             </a>
-                            <button class="btn-link" data-project="ui-components">
+                            <button class="btn-link" data-project="ordering-app">
                                 <i class="fas fa-images"></i> View Gallery
                             </button>
                         </div>
@@ -381,31 +401,34 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
             </div>
 
             <div class="view-more-container fade-in">
-                <a href="https://github.com/AnishAntil" target="_blank" class="btn-primary">
+                <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" class="btn-primary">
                     View More on GitHub <i class="fab fa-github"></i>
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- Project Gallery Modal -->
     <div id="projectGalleryModal" class="project-gallery-modal">
         <div class="gallery-modal-content">
             <span class="gallery-close">&times;</span>
             <h3 class="gallery-title">Project Gallery</h3>
             <div class="gallery-container">
-                </div>
+                <!-- Images will be loaded here dynamically by JS -->
+            </div>
             <div class="gallery-navigation">
-                <button class="gallery-prev">
-                    <i class="fas fa-chevron-left"></i>
+                <button class="gallery-prev" aria-label="Previous image">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
                 </button>
                 <div class="gallery-dots"></div>
-                <button class="gallery-next">
-                    <i class="fas fa-chevron-right"></i>
+                <button class="gallery-next" aria-label="Next image">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Education & Experience Section -->
     <section class="timeline-section" id="education">
         <div class="svg-divider top-divider">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -488,6 +511,7 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title fade-in"><span>Get In Touch</span></h2>
@@ -511,12 +535,35 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                     </div>
 
                     <div class="social-links fade-in">
-                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://leetcode.com/profile/" target="_blank" class="social-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" class="leetcode-icon" />
-                        </a>
-                        <a href="https://github.com/AnishAntil" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                    </div>
+
+    <a href="https://www.linkedin.com/in/anish-kumar-57a538356/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-icon"
+       aria-label="LinkedIn Profile">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+    </a>
+
+    <a href="https://leetcode.com/profile/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-icon"
+       aria-label="LeetCode Profile">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+             alt="LeetCode"
+             class="leetcode-icon" />
+    </a>
+
+    <a href="https://github.com/AnishAntil"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-icon"
+       aria-label="GitHub Profile">
+        <i class="fab fa-github" aria-hidden="true"></i>
+    </a>
+
+</div>
+
                 </div>
 
                 <div class="contact-form fade-in" id="contactForm">
@@ -543,10 +590,11 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Anish. All rights reserved.</p>
+            <p>&copy; 2026 Anish. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
     <button id="backToTopBtn" title="Go to top">
         <i class="fas fa-arrow-up"></i>
     </button>
