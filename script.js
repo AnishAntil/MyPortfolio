@@ -547,9 +547,12 @@ function initProjectGallery() {
             { src: "images/TDL3.png", alt: "TO-DO List Active Task" },
             { src: "images/TDL4.png", alt: "TO-DO List Completed Task" },
         ],
-        "ui-components": [ // This is the 'ui' project from your old script
-            { src: "images/ui sample.png", alt: "Interactive UI Sample 1" },
-            { src: "images/ui sample2.png", alt: "Interactive UI Sample 2" },
+        "ordering-app": [ // This is the 'ui' project from your old script
+            { src: "images/FOA1.png", alt: "Dashboard 1" },
+            { src: "images/FOA2.png", alt: "Menu 2" },
+            { src: "images/FOA3.png", alt: "Cart 3" },
+            { src: "images/FOA4.png", alt: "Payment 4" },
+            { src: "images/FOA5.png", alt: "Place Order 5" },
         ],
     };
 
@@ -559,7 +562,7 @@ function initProjectGallery() {
         "breakout-game": "Break Out Ball Game",
         "note-app": "Advanced Notes App - Java Desktop Application",
         "todo-app": "TO-DO List Web Application",
-        "ui-components": "Interactive UI Components",
+        "ordering-app": "Food Ordering Application",
     };
 
 
