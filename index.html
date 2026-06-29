@@ -10,7 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
 </head>
 
-<body>
+<body class="dark-mode">
+    <canvas id="matrixCanvas"></canvas>
+
     <header>
         <div class="navbar">
             <div class="logo">AK</div>
@@ -23,15 +25,13 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
-            <div class="theme-switch">
-                <i class="fas fa-moon"></i>
+            <div class="header-status">
+                <span class="status-indicator"></span> SECURE SHELL
             </div>
         </div>
     </header>
 
-    <!-- Enhanced Hero Section -->
     <section class="hero" id="about">
-        <!-- Hero Overlay for subtle gradient/texture -->
         <div class="hero-overlay"></div>
         <div class="particles-container" id="particles-js"></div>
         <div class="hero-wrapper">
@@ -51,22 +51,109 @@
                     <p class="fade-in">
                         Innovative Computer Science student with experience in building responsive web applications using modern technologies. Passionate about creating clean, efficient, and user-friendly digital experiences.
                     </p>
+
+                    <div class="terminal-container fade-in">
+                        <div class="terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">bash — anish@portfolio</span>
+                        </div>
+                        <div class="terminal-body" id="terminalBody">
+                            <div class="terminal-line">Welcome to the interactive shell. Type <span class="highlight">help</span> to see available commands. Hint: try typing <span class="highlight">dev</span> on your keyboard anywhere!</div>
+                            <div class="terminal-input-line">
+                                <span class="terminal-prompt">anish@developer:~$</span>
+                                <input type="text" id="terminalInput" autocomplete="off" />
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="hero-cta fade-in">
-                        <a href="anish_resume.pdf" download="anish_resume.pdf" class="btn-primary">
+                        <a href="anish_resume.pdf" download="anish_resume.pdf" class="btn-primary magnetic-btn">
                             <i class="fas fa-download"></i> Download Resume
                         </a>
-                        <a href="#contact" class="btn-secondary">
+                        <a href="#contact" class="btn-secondary magnetic-btn">
                             <i class="fas fa-envelope"></i> Let's Connect
                         </a>
                     </div>
-                   <div class="hero-social fade-in">
-                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" rel="noopener noreferrer" title="Visit my LinkedIn profile" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" title="Visit my LeetCode profile" class="social-icon">
-                            
+                    <div class="hero-social fade-in">
+                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" rel="noopener noreferrer" title="Visit my LinkedIn profile" class="social-icon magnetic-btn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/anish_antil/" target="_blank" rel="noopener noreferrer" title="Visit my Instagram profile" class="social-icon magnetic-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" title="Visit my LeetCode profile" class="social-icon magnetic-btn">
                             <img src="images/leet.webp" alt="LeetCode" class="leetcode-icon" />
                         </a>
-                        <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" title="Visit my GitHub profile" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" title="Visit my GitHub profile" class="social-icon magnetic-btn"><i class="fab fa-github"></i></a>
                     </div>
+
+                    <div class="leetcode-dashboard fade-in" id="leetcodeWidget">
+                        <div class="lc-top-row">
+                            <div class="lc-card lc-progress-card">
+                                <div class="lc-circle-wrapper">
+                                    <svg class="lc-svg-circle" viewBox="0 0 100 100">
+                                        <circle class="bg" cx="50" cy="50" r="40"></circle>
+                                        <circle class="prog easy-prog" id="circleEasy" cx="50" cy="50" r="40"></circle>
+                                        <circle class="prog med-prog" id="circleMed" cx="50" cy="50" r="40"></circle>
+                                        <circle class="prog hard-prog" id="circleHard" cx="50" cy="50" r="40"></circle>
+                                    </svg>
+                                    <div class="lc-circle-text">
+                                        <span class="lc-solved-num" id="lcSolved">659</span>
+                                        <span class="lc-solved-total">/3977</span>
+                                        <div class="lc-solved-label"><i class="fas fa-check"></i> Solved</div>
+                                    </div>
+                                </div>
+                                <div class="lc-attempting">1 Attempting</div>
+                            </div>
+
+                            <div class="lc-card lc-breakdown-card">
+                                <div class="lc-pill easy-pill">
+                                    <div class="pill-label">Easy</div>
+                                    <div class="pill-count" id="lcEasy-breakdown">172<span class="sub-total">/951</span></div>
+                                </div>
+                                <div class="lc-pill med-pill">
+                                    <div class="pill-label">Med.</div>
+                                    <div class="pill-count" id="lcMed-breakdown">353<span class="sub-total">/2077</span></div>
+                                </div>
+                                <div class="lc-pill hard-pill">
+                                    <div class="pill-label">Hard</div>
+                                    <div class="pill-count" id="lcHard-breakdown">134<span class="sub-total">/949</span></div>
+                                </div>
+                            </div>
+
+                            <div class="lc-card lc-badges-card">
+                                <div class="badges-header">
+                                    <span>Badges</span>
+                                    <span class="badge-count-top">19</span>
+                                    <i class="fas fa-arrow-right badge-arrow"></i>
+                                </div>
+                                <div class="badges-row">
+                                    <div class="lc-badge-icon">🏆</div>
+                                    <div class="lc-badge-icon">👑</div>
+                                    <div class="lc-badge-icon">⭐</div>
+                                </div>
+                                <div class="most-recent-badge">
+                                    <div class="recent-lbl">Most Recent Badge</div>
+                                    <div class="recent-val">365 Days Badge</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lc-card lc-calendar-card">
+                            <div class="calendar-header">
+                                <span class="submission-count">403 submissions <span class="sub-fade">in the past one year</span></span>
+                                <div class="calendar-stats">
+                                    <span>Total active days: <strong class="hl">357</strong></span>
+                                    <span>Max streak: <strong class="hl">105</strong></span>
+                                </div>
+                            </div>
+                            
+                            <div class="calendar-grid" id="calendarGrid"></div>
+                            
+                            <div class="calendar-months">
+                                <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -80,7 +167,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section class="skills-section" id="skills">
         <div class="svg-divider top-divider">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -89,31 +175,32 @@
         </div>
         <div class="container">
             <h2 class="section-title fade-in"><span>Technical Skills</span></h2>
+            <p style="text-align: center; margin-top: -30px; margin-bottom: 40px; color: var(--gray-color); font-size: 0.9rem;">💡 Click a skill card below to filter matching projects instantly!</p>
 
             <div class="skills-category fade-in">
                 <h3>Frontend Development</h3>
                 <div class="skills-grid">
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="react.js">
                         <img src="images/react.png" alt="React.js" />
                         <span>React.js</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="next.js">
                         <img src="images/nextjslogo.png" alt="Next.js" />
                         <span>Next.js</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="tailwind css">
                         <img src="images/taillogo.png" alt="Tailwind CSS" />
                         <span>Tailwind CSS</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="html">
                         <img src="images/htmllogo.png" alt="HTML5" />
                         <span>HTML5</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="css">
                         <img src="images/csslogo.png" alt="CSS3" />
                         <span>CSS3</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="javascript">
                         <img src="images/jslogo.png" alt="JavaScript" />
                         <span>JavaScript</span>
                     </div>
@@ -123,11 +210,11 @@
             <div class="skills-category fade-in">
                 <h3>Backend & Database</h3>
                 <div class="skills-grid">
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="firebase">
                         <img src="images/firebase.png" alt="Firebase" />
                         <span>Firebase</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="mysql">
                         <img src="images/mysqllogo.png" alt="MySQL" />
                         <span>MySQL</span>
                     </div>
@@ -137,15 +224,15 @@
             <div class="skills-category fade-in">
                 <h3>Programming Languages</h3>
                 <div class="skills-grid">
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="java">
                         <img src="images/javalogo.png" alt="Java" />
                         <span>Java</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="python">
                         <img src="images/pythonlogo.webp" alt="Python" />
                         <span>Python</span>
                     </div>
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="c">
                         <img src="images/clogo.png" alt="C" />
                         <span>C</span>
                     </div>
@@ -155,7 +242,7 @@
             <div class="skills-category fade-in">
                 <h3>Cloud & DevOps</h3>
                 <div class="skills-grid">
-                    <div class="skill-card fade-in">
+                    <div class="skill-card fade-in" data-skill="aws">
                         <img src="images/awslogo.png" alt="AWS" />
                         <span>AWS</span>
                     </div>
@@ -169,7 +256,6 @@
         </div>
     </section>
 
-    <!-- Optimized Project Section -->
     <section class="projects-section" id="projects">
         <div class="container">
             <h2 class="section-title fade-in"><span>Featured Projects</span></h2>
@@ -182,7 +268,6 @@
             </div>
 
             <div class="projects-grid">
-                <!-- STUDENT RESULT MANAGEMENT SYSTEM -->
                 <div class="project-card fade-in" id="srms-project" data-category="web">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -226,7 +311,6 @@
                     </div>
                 </div>
 
-                <!-- BREAK OUT BALL GAME -->
                 <div class="project-card fade-in" id="breakout-game" data-category="desktop">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -268,7 +352,6 @@
                     </div>
                 </div>
 
-                <!-- Advanced Notes App - Java Desktop Application -->
                 <div class="project-card fade-in" id="note-app" data-category="desktop">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -294,10 +377,12 @@
                             <span>Java</span>
                             <span>Swing</span>
                             <span>Desktop App</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
                         </div>
                         <p>
-                            About
-A modern, smooth, and feature-rich note-taking web application built with vanilla HTML, CSS, and JavaScript. It includes a responsive UI, dark mode, rich-text editing, and a powerful search with live suggestions.
+                            About A modern, smooth, and feature-rich note-taking web application built with vanilla HTML, CSS, and JavaScript. It includes a responsive UI, dark mode, rich-text editing, and a powerful search with live suggestions.
                         </p>
                         <div class="project-links">
                             <a href="https://advanced-notes-app-pi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-link">
@@ -313,7 +398,6 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                     </div>
                 </div>
 
-                <!-- TO-DO List Web Application -->
                 <div class="project-card fade-in" id="todo-app" data-category="web">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -331,10 +415,10 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                     <div class="project-content">
                         <h3>TO-DO List Web Application</h3>
                         <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>Local Storage</span>
+                            <span>Next.js</span>
+                            <span>React.js</span>
+                            <span>Tailwind CSS</span>
+                            <span>Firebase</span>
                         </div>
                         <p>
                             My To-Do App A simple and modern to-do list web application built with Next.js, React, and Tailwind CSS. The app features real-time data persistence using Firebase Firestore and a seamless user experience with anonymous authentication.
@@ -353,7 +437,6 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                     </div>
                 </div>
 
-                <!-- Food Ordering application -->
                 <div class="project-card fade-in" id="ordering-app" data-category="ui">
                     <div class="project-slider">
                         <div class="project-slider-inner">
@@ -365,10 +448,10 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                         </div>
                         <div class="slider-controls">
                             <button class="slider-prev" aria-label="Previous slide">
-                                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-left"></i>
                             </button>
                             <button class="slider-next" aria-label="Next slide">
-                                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                                <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
                         <div class="slider-dots"></div>
@@ -385,7 +468,7 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
                             A collection of modern and interactive UI components designed to enhance user experience. Includes custom sliders, buttons, and form elements.
                         </p>
                         <div class="project-links">
-                            <a href="https://ttc.tanmaynandwana.in/home" class="btn-link">
+                            <a href="https://anishantil-tastybites.lovable.app" class="btn-link">
                                 <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                             <a href="https://github.com/AnishAntil/Interactive-UI-components" target="_blank" rel="noopener noreferrer" class="btn-link">
@@ -401,21 +484,18 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
             </div>
 
             <div class="view-more-container fade-in">
-                <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn">
                     View More on GitHub <i class="fab fa-github"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Project Gallery Modal -->
     <div id="projectGalleryModal" class="project-gallery-modal">
         <div class="gallery-modal-content">
             <span class="gallery-close">&times;</span>
             <h3 class="gallery-title">Project Gallery</h3>
-            <div class="gallery-container">
-                <!-- Images will be loaded here dynamically by JS -->
-            </div>
+            <div class="gallery-container"></div>
             <div class="gallery-navigation">
                 <button class="gallery-prev" aria-label="Previous image">
                     <i class="fas fa-chevron-left" aria-hidden="true"></i>
@@ -428,7 +508,6 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
         </div>
     </div>
 
-    <!-- Education & Experience Section -->
     <section class="timeline-section" id="education">
         <div class="svg-divider top-divider">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -511,97 +590,138 @@ A modern, smooth, and feature-rich note-taking web application built with vanill
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
             <h2 class="section-title fade-in"><span>Get In Touch</span></h2>
 
             <div class="contact-container">
-                <div class="contact-info fade-in">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                        </div>
                         <div>
                             <h3>Email</h3>
                             <p><a href="mailto:anishantil01@gmail.com">anishantil01@gmail.com</a></p>
                         </div>
                     </div>
 
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
                         <div>
                             <h3>Location</h3>
                             <p>Sonipat, Haryana, India</p>
                         </div>
                     </div>
 
-                    <div class="social-links fade-in">
-
-    <a href="https://www.linkedin.com/in/anish-kumar-57a538356/"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="social-icon"
-       aria-label="LinkedIn Profile">
-        <i class="fab fa-linkedin" aria-hidden="true"></i>
-    </a>
-
-    <a href="https://leetcode.com/profile/"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="social-icon"
-       aria-label="LeetCode Profile">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
-             alt="LeetCode"
-             class="leetcode-icon" />
-    </a>
-
-    <a href="https://github.com/AnishAntil"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="social-icon"
-       aria-label="GitHub Profile">
-        <i class="fab fa-github" aria-hidden="true"></i>
-    </a>
-
-</div>
-
+                    <div class="social-links-modern fade-in">
+                        <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/anish_antil/" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                        <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="LeetCode Profile"><img src="images/leet.webp" alt="LeetCode" class="leetcode-icon" /></a>
+                        <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
                 <div class="contact-form fade-in" id="contactForm">
-                    <form action="https://formsubmit.co/anishantil01@gmail.com" method="POST">
+                    <form action="https://formsubmit.co/anishantil01@gmail.com" method="POST" autocomplete="off">
                         <input type="hidden" name="_captcha" value="false" />
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required />
+                        
+                        <div class="form-group-modern">
+                            <input type="text" id="name" name="name" required placeholder=" " />
+                            <label for="name">Your Name</label>
+                            <span class="focus-border"></span>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required />
+                        
+                        <div class="form-group-modern">
+                            <input type="email" id="email" name="email" required placeholder=" " />
+                            <label for="email">Your Email</label>
+                            <span class="focus-border"></span>
                         </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" />
+                        
+                        <div class="form-group-modern">
+                            <input type="text" id="subject" name="subject" required placeholder=" " />
+                            <label for="subject">Subject</label>
+                            <span class="focus-border"></span>
                         </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        
+                        <div class="form-group-modern">
+                            <textarea id="message" name="message" required placeholder=" "></textarea>
+                            <label for="message">Your Message</label>
+                            <span class="focus-border"></span>
                         </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
+                        
+                        <button type="submit" class="btn-submit-modern magnetic-btn">
+                            <span class="btn-text">Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Anish. All rights reserved.</p>
+    <footer class="modern-footer">
+        <div class="footer-top-divider"></div>
+        <div class="container footer-container">
+            
+            <div class="footer-column brand-col">
+                <div class="logo">AK</div>
+                <p class="footer-description">
+                    Crafting clean, efficient, and user-centric web applications from the ground up. Let's build something exceptional.
+                </p>
+                <div class="footer-status-badge">
+                    <span class="pulse-dot"></span>
+                    <span class="status-text">SYSTEMS OPERATIONAL // 2026</span>
+                </div>
+            </div>
+
+            <div class="footer-column links-col">
+                <h3>Quick Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#about"><i class="fas fa-terminal"></i> About</a></li>
+                    <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#projects"><i class="fas fa-layer-group"></i> Projects</a></li>
+                    <li><a href="#education"><i class="fas fa-graduation-cap"></i> Timeline</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column tech-col">
+                <h3>Built With</h3>
+                <div class="tech-tags-container">
+                    <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                    <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                    <span class="tech-tag"><i class="fab fa-js"></i> ES6+</span>
+                    <span class="tech-tag"><i class="fas fa-bolt"></i> Vercel</span>
+                </div>
+                <div class="encryption-notice">
+                    <i class="fas fa-lock"></i> Secure Connection Enabled
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container bottom-wrapper">
+                <p class="copyright-text">&copy; 2026 Anish Kumar. Crafted with passion.</p>
+                <div class="footer-meta-links">
+                    <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer">Open Source Core</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
+    <a href="https://wa.me/917988252001" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <button id="backToTopBtn" title="Go to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
-
 </body>
-
 </html>
