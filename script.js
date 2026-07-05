@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 // Fire async asset trackers once layout frame scales into position
                 fetchLeetCodeStats();
+                startLeetCodePolling();
             }, 200);
         }
     }
@@ -46,9 +47,35 @@ document.addEventListener("DOMContentLoaded", function() {
     // Fire loader scripts immediately upon parsing DOM trees
     runBootSequence();
 
+    // Pause live-sync polling when the tab is hidden, resync immediately when it's back
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            stopLeetCodePolling();
+        } else {
+            fetchLeetCodeStats();
+            startLeetCodePolling();
+        }
+    });
+
 
     // --- 1. Scroll Animation Logic ---
-    const faders = document.querySelectorAll(".fade-in");
+
+    // Give timeline items a left/right slide that matches their alternating
+    // layout, project cards a zig-zag entrance, and skill cards a punchy pop-in.
+    document.querySelectorAll('.timeline-item.fade-in').forEach((item, i) => {
+        item.classList.remove('fade-in');
+        item.classList.add(i % 2 === 0 ? 'fade-right' : 'fade-left');
+    });
+    document.querySelectorAll('.project-card.fade-in').forEach((card, i) => {
+        card.classList.remove('fade-in');
+        card.classList.add(i % 2 === 0 ? 'fade-left' : 'fade-right');
+    });
+    document.querySelectorAll('.skill-card.fade-in').forEach(card => {
+        card.classList.remove('fade-in');
+        card.classList.add('fade-pop');
+    });
+
+    const faders = document.querySelectorAll(".fade-in, .fade-left, .fade-right, .fade-pop");
     const appearOptions = {
         threshold: 0.2,
         rootMargin: "0px 0px -50px 0px"
@@ -65,9 +92,9 @@ document.addEventListener("DOMContentLoaded", function() {
     faders.forEach(fader => appearOnScroll.observe(fader));
 
     // Staggered loading offsets[cite: 2]
-    document.querySelectorAll('.skill-card.fade-in').forEach((card, i) => card.style.transitionDelay = `${i * 0.05}s`);
-    document.querySelectorAll('.project-card.fade-in').forEach((card, i) => card.style.transitionDelay = `${i * 0.1}s`);
-    document.querySelectorAll('.timeline-item.fade-in').forEach((item, i) => item.style.transitionDelay = `${i * 0.12}s`);
+    document.querySelectorAll('.skill-card.fade-pop').forEach((card, i) => card.style.transitionDelay = `${i * 0.06}s`);
+    document.querySelectorAll('.project-card.fade-left, .project-card.fade-right').forEach((card, i) => card.style.transitionDelay = `${i * 0.12}s`);
+    document.querySelectorAll('.timeline-item.fade-left, .timeline-item.fade-right').forEach((item, i) => item.style.transitionDelay = `${i * 0.15}s`);
 
 
     // --- 2. Navigation Active State[cite: 2] ---
@@ -351,27 +378,94 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // --- 14. Dynamic Live Performance LeetCode Stats Fetch & Count Up Engine[cite: 2] ---
+const LEETCODE_REFRESH_MS = 5 * 60 * 1000; // 5 minutes — considerate default for a free, rate-limited API
+const LEETCODE_RATE_LIMIT_COOLDOWN_MS = 60 * 60 * 1000; // back off for 1 hour when rate-limited
+let leetCodeFetchInFlight = false;
+let leetCodePollTimer = null;
+let leetCodeCooldownTimer = null;
+let lcLastSyncAt = null;   // timestamp (ms) of the last successful sync
+let lcSyncFailed = false;  // true while the most recent attempt failed
+let lcRateLimited = false; // true while we're deliberately backing off from a 429
+
+function startLeetCodePolling() {
+    stopLeetCodePolling();
+    if (lcRateLimited) return; // don't resume normal polling mid-cooldown
+    leetCodePollTimer = setInterval(fetchLeetCodeStats, LEETCODE_REFRESH_MS);
+}
+
+function stopLeetCodePolling() {
+    if (leetCodePollTimer) {
+        clearInterval(leetCodePollTimer);
+        leetCodePollTimer = null;
+    }
+}
+
+// If the API tells us we're rate-limited, stop hammering it entirely and
+// wait out a full cooldown window before trying again — repeatedly retrying
+// every few seconds only makes the block last longer.
+function enterRateLimitCooldown() {
+    lcRateLimited = true;
+    stopLeetCodePolling();
+    if (leetCodeCooldownTimer) clearTimeout(leetCodeCooldownTimer);
+    leetCodeCooldownTimer = setTimeout(() => {
+        lcRateLimited = false;
+        fetchLeetCodeStats();
+        startLeetCodePolling();
+    }, LEETCODE_RATE_LIMIT_COOLDOWN_MS);
+    updateSyncStatusDisplay();
+}
+
+// Ticks every second so you can visually confirm the widget is alive even on
+// polls where the underlying LeetCode numbers happen not to change.
+function updateSyncStatusDisplay() {
+    const syncStatusEl = document.getElementById("lcSyncStatus");
+    if (!syncStatusEl) return;
+
+    if (lcRateLimited) {
+        syncStatusEl.textContent = "Rate limited — retrying in ~1h";
+        return;
+    }
+    if (lcSyncFailed) {
+        syncStatusEl.textContent = "Sync failed — retrying soon";
+        return;
+    }
+    if (!lcLastSyncAt) {
+        syncStatusEl.textContent = "Live Sync";
+        return;
+    }
+    const secs = Math.floor((Date.now() - lcLastSyncAt) / 1000);
+    if (secs < 5) syncStatusEl.textContent = "Synced just now";
+    else if (secs < 60) syncStatusEl.textContent = `Synced ${secs}s ago`;
+    else syncStatusEl.textContent = `Synced ${Math.floor(secs / 60)}m ago`;
+}
+setInterval(updateSyncStatusDisplay, 1000);
+
 async function fetchLeetCodeStats() {
     const dashboard = document.getElementById("leetcodeWidget");
     if (!dashboard) return;
+    if (leetCodeFetchInFlight) return; // never let two syncs race each other
+    leetCodeFetchInFlight = true;
 
     const solvedEl = document.getElementById("lcSolved");
     const easyEl = document.getElementById("lcEasy-breakdown");
     const medEl = document.getElementById("lcMed-breakdown");
     const hardEl = document.getElementById("lcHard-breakdown");
 
-    // Eased count up calculation using requestAnimationFrame[cite: 2]
+    // Eased transition from whatever is currently on screen to the new value,
+    // so a periodic refresh doesn't reset the counters back to 0 every time.
     function animateCountUp(element, targetValue) {
         if (!element) return;
-        const duration = 1500; 
+        const startValue = parseInt(element.textContent, 10) || 0;
+        if (startValue === targetValue) return;
+
+        const duration = 1200;
         const startTime = performance.now();
 
         function step(currentTime) {
             const elapsedTime = currentTime - startTime;
             const progress = Math.min(elapsedTime / duration, 1);
             const easeOutQuad = progress * (2 - progress);
-            const currentValue = Math.floor(easeOutQuad * targetValue);
-            
+            const currentValue = Math.round(startValue + (targetValue - startValue) * easeOutQuad);
             element.textContent = currentValue;
 
             if (progress < 1) {
@@ -383,30 +477,99 @@ async function fetchLeetCodeStats() {
         window.requestAnimationFrame(step);
     }
 
+    function flashUpdated() {
+        dashboard.classList.add("lc-just-updated");
+        setTimeout(() => dashboard.classList.remove("lc-just-updated"), 800);
+    }
+
+    function applyFallbackIfEmpty() {
+        // Only fall back to the hard-coded targets if nothing has ever loaded yet,
+        // so a temporary blip during a later poll doesn't wipe out real numbers.
+        if ((parseInt(solvedEl.textContent, 10) || 0) === 0) {
+            animateCountUp(solvedEl, parseInt(solvedEl.getAttribute("data-target"), 10));
+            animateCountUp(easyEl, parseInt(easyEl.getAttribute("data-target"), 10));
+            animateCountUp(medEl, parseInt(medEl.getAttribute("data-target"), 10));
+            animateCountUp(hardEl, parseInt(hardEl.getAttribute("data-target"), 10));
+        }
+    }
+
     const username = "AnishAntil";
     const apiEndpoint = `https://alfa-leetcode-api.onrender.com/${username}/solved`;
 
     try {
-        const response = await fetch(apiEndpoint);
-        if (!response.ok) throw new Error("API Offline");
-        const data = await response.json();
+        const response = await fetch(apiEndpoint, { cache: "no-store" });
+        const rawText = await response.text();
 
-        const totalSolved = data.solvedQuestions || parseInt(solvedEl.getAttribute("data-target"));
-        const easySolved = data.easySolved || parseInt(easyEl.getAttribute("data-target"));
-        const medSolved = data.mediumSolved || parseInt(medEl.getAttribute("data-target"));
-        const hardSolved = data.hardSolved || parseInt(hardEl.getAttribute("data-target"));
+        if (response.status === 429 || /too many request/i.test(rawText)) {
+            throw Object.assign(new Error(`Rate limited: ${rawText.slice(0, 200)}`), { isRateLimit: true });
+        }
+        if (!response.ok) {
+            throw new Error(`API responded with HTTP ${response.status}: ${rawText.slice(0, 200)}`);
+        }
+
+        let data;
+        try {
+            data = JSON.parse(rawText);
+        } catch {
+            throw new Error(`API returned non-JSON body: ${rawText.slice(0, 200)}`);
+        }
+
+        const easySolved = data.easySolved ?? parseInt(easyEl.getAttribute("data-target"), 10);
+        const medSolved = data.mediumSolved ?? parseInt(medEl.getAttribute("data-target"), 10);
+        const hardSolved = data.hardSolved ?? parseInt(hardEl.getAttribute("data-target"), 10);
+
+        // The API's own "solvedQuestions" total has been observed to lag behind
+        // its own easy/medium/hard breakdown, so derive the total from the
+        // breakdown (which the API keeps accurate) rather than trusting it directly.
+        const breakdownTotal = easySolved + medSolved + hardSolved;
+        const apiTotal = data.solvedQuestions;
+        const totalSolved = Number.isFinite(breakdownTotal) && breakdownTotal > 0
+            ? breakdownTotal
+            : (apiTotal ?? parseInt(solvedEl.getAttribute("data-target"), 10));
+
+        if (apiTotal !== undefined && apiTotal !== totalSolved) {
+            console.warn(`[LeetCode widget] API's own total (${apiTotal}) disagreed with its easy+medium+hard breakdown (${breakdownTotal}) — using the breakdown sum.`);
+        }
+        if (apiTotal === undefined) {
+            console.warn("[LeetCode widget] response is missing 'solvedQuestions' — using the breakdown sum instead. Full response:", data);
+        }
+
+        const hasChanged = [
+            [solvedEl, totalSolved],
+            [easyEl, easySolved],
+            [medEl, medSolved],
+            [hardEl, hardSolved],
+        ].some(([el, val]) => (parseInt(el.textContent, 10) || 0) !== val);
 
         animateCountUp(solvedEl, totalSolved);
         animateCountUp(easyEl, easySolved);
         animateCountUp(medEl, medSolved);
         animateCountUp(hardEl, hardSolved);
 
+        if (hasChanged) flashUpdated();
+
+        lcLastSyncAt = Date.now();
+        lcSyncFailed = false;
+        lcRateLimited = false;
+        updateSyncStatusDisplay();
+
+        // Surface it for easy manual verification from the browser console too
+        console.info("[LeetCode widget] synced OK:", { totalSolved, easySolved, medSolved, hardSolved, rawResponse: data, at: new Date().toISOString() });
+
     } catch (err) {
-        console.warn("LeetCode telemetry connection down. Rendering local cached data targets.");
-        animateCountUp(solvedEl, parseInt(solvedEl.getAttribute("data-target")));
-        animateCountUp(easyEl, parseInt(easyEl.getAttribute("data-target")));
-        animateCountUp(medEl, parseInt(medEl.getAttribute("data-target")));
-        animateCountUp(hardEl, parseInt(hardEl.getAttribute("data-target")));
+        if (err && err.isRateLimit) {
+            console.warn("[LeetCode widget] rate-limited by the API — backing off for 1 hour instead of retrying repeatedly:", err.message);
+            enterRateLimitCooldown();
+            applyFallbackIfEmpty();
+            leetCodeFetchInFlight = false;
+            return;
+        }
+        console.warn("[LeetCode widget] sync failed, keeping last known values:", err);
+        lcSyncFailed = true;
+        updateSyncStatusDisplay();
+        applyFallbackIfEmpty();
+    } finally {
+        leetCodeFetchInFlight = false;
     }
 }
 
