@@ -579,6 +579,7 @@ nav ul {
     filter: blur(28px);
     opacity: 0.55;
     animation: glowRingSpin 10s linear infinite;
+    will-change: transform;
 }
 
 @keyframes glowRingSpin {
@@ -787,6 +788,10 @@ nav ul {
     border: 1px solid var(--glass-border); border-radius: var(--border-radius-lg);
     margin: 15px 0 25px 0; box-shadow: var(--glow-primary);
     overflow: hidden; text-align: left; font-family: 'Courier New', Courier, monospace;
+    /* Same GPU-layer isolation as the LeetCode card below it — prevents the
+       backdrop-filter blur from being resampled on every scroll frame. */
+    transform: translateZ(0);
+    will-change: transform;
 }
 .terminal-header {
     background-color: rgba(255, 255, 255, 0.03); padding: 10px 14px;
@@ -823,6 +828,12 @@ nav ul {
     box-shadow: var(--glow-accent);
     font-family: monospace;
     text-align: left;
+    /* Isolate the backdrop-filter blur to its own GPU layer — without this,
+       the browser has to re-sample everything behind the card on every
+       scroll frame, which is what causes stutter as it scrolls in/out of
+       view. Same fix already applied to the fixed header. */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .lc-header-minimal {
