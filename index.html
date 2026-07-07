@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anish Kumar | Full-Stack Developer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body class="dark-mode">
+    <!-- Fixed scroll-progress indicator (thin gradient bar, top of viewport) -->
+    <div id="scrollProgressBar" aria-hidden="true"></div>
+
+    <!-- Cyber Terminal System Boot Preloader -->
+    <div id="sysPreloader">
+        <div class="loader-terminal">
+            <div class="loader-hdr">
+                <span class="ld-dot r"></span>
+                <span class="ld-dot y"></span>
+                <span class="ld-dot g"></span>
+                <span class="ld-title">system_boot.sh</span>
+            </div>
+            <div class="loader-lines" id="loaderLines"></div>
+            <div class="loader-progress-track">
+                <div class="loader-progress-bar" id="loaderBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- Content Workspace Wrapper for coordinated entry animations -->
+    <div id="pageWorkspace" class="hidden-initially">
+        <header>
+            <div class="navbar">
+                <div class="logo">AK</div>
+                <nav>
+                    <ul>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#education" class="nav-link">Education</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-status">
+                    <span class="status-indicator"></span> SECURE SHELL
+                </div>
+            </div>
+        </header>
+
+        <section class="hero" id="about">
+            <div class="hero-overlay"></div>
+            <div class="particles-container" id="particles-js"></div>
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="hero-image">
+                        <div class="hero-image-frame fade-in">
+                            <img src="images/PROFILEP.jpg" alt="Anish Kumar - Full-Stack Developer" />
+                        </div>
+                        <div class="hero-image-shape fade-in"></div>
+                    </div>
+                    <div class="hero-text">
+                        <div class="hero-subtitle fade-in">Hello, I'm</div>
+                        <h1 class="hero-title fade-in">Anish Kumar</h1>
+                        <h2 class="hero-role fade-in">
+                            <span class="txt-rotate" data-period="2000" data-rotate='[ "Full-Stack Developer", "Web Developer", "UI Designer", "Computer Science Student" ]'></span>
+                        </h2>
+                        <p class="fade-in">
+                            Innovative Computer Science student with experience in building responsive web applications using modern technologies. Passionate about creating clean, efficient, and user-friendly digital experiences.
+                        </p>
+
+                        <div class="terminal-container fade-in">
+                            <div class="terminal-header">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                                <span class="terminal-title">bash — Anish@portfolio</span>
+                            </div>
+                            <div class="terminal-body" id="terminalBody">
+                                <div class="terminal-line">Welcome to the interactive shell. Type <span class="highlight">help</span> to see available commands. Hint: try typing <span class="highlight">dev</span> on your keyboard anywhere!</div>
+                                <div class="terminal-input-line">
+                                    <span class="terminal-prompt">Anish@developer:~$</span>
+                                    <input type="text" id="terminalInput" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-cta fade-in">
+                            <a href="anish_resume.pdf" download="anish_resume.pdf" class="btn-primary magnetic-btn">
+                                <i class="fas fa-download"></i> Download Resume
+                            </a>
+                            <a href="#contact" class="btn-secondary magnetic-btn">
+                                <i class="fas fa-envelope"></i> Let's Connect
+                            </a>
+                        </div>
+                        <div class="hero-social fade-in">
+                            <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" rel="noopener noreferrer" title="Visit my LinkedIn profile" class="social-icon magnetic-btn"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/anish_antil/" target="_blank" rel="noopener noreferrer" title="Visit my Instagram profile" class="social-icon magnetic-btn"><i class="fab fa-instagram"></i></a>
+                            <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" title="Visit my LeetCode profile" class="social-icon magnetic-btn">
+                                <img src="images/leet.webp" alt="LeetCode" class="leetcode-icon"  loading="lazy" decoding="async" />
+                            </a>
+                            <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" title="Visit my GitHub profile" class="social-icon magnetic-btn"><i class="fab fa-github"></i></a>
+                        </div>
+
+                        <!-- Sober Minimalist Live Analytics Module -->
+                        <div class="leetcode-minimal-card fade-in" id="leetcodeWidget">
+                            <div class="lc-header-minimal">
+                                <div class="lc-brand-title">
+                                    <img src="images/leet.webp" alt="LeetCode" class="leetcode-icon-min"  loading="lazy" decoding="async" />
+                                    <span>LEETCODE METRICS ENGINE</span>
+                                </div>
+                                <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" class="lc-profile-link">
+                                    Live Profile <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="lc-stats-row-minimal">
+                                <div class="lc-metric-box main-metric">
+                                    <span class="lc-label-min">TOTAL SOLVED</span>
+                                    <div class="lc-count-large"><span id="lcSolved" data-target="659">0</span></div>
+                                    <span class="lc-subtext-min"><i class="fas fa-sync-alt fa-spin"></i> <span id="lcSyncStatus">Live Sync</span></span>
+                                </div>
+                                <div class="lc-metric-box status-easy">
+                                    <span class="lc-label-min">EASY</span>
+                                    <div class="lc-count-med"><span id="lcEasy-breakdown" data-target="172">0</span></div>
+                                </div>
+                                <div class="lc-metric-box status-med">
+                                    <span class="lc-label-min">MEDIUM</span>
+                                    <div class="lc-count-med"><span id="lcMed-breakdown" data-target="353">0</span></div>
+                                </div>
+                                <div class="lc-metric-box status-hard">
+                                    <span class="lc-label-min">HARD</span>
+                                    <div class="lc-count-med"><span id="lcHard-breakdown" data-target="134">0</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll fade-in">
+                <a href="#skills">
+                    <div class="mouse-icon">
+                        <div class="mouse-wheel"></div>
+                    </div>
+                    <span>Scroll Down</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+            <div class="svg-divider top-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+            <div class="container">
+                <h2 class="section-title fade-in"><span>Technical Skills</span></h2>
+                <p style="text-align: center; margin-top: -30px; margin-bottom: 40px; color: var(--gray-color); font-size: 0.9rem;">💡 Click a skill card below to filter matching projects instantly!</p>
+
+                <div class="skills-category fade-in">
+                    <h3>Frontend Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card fade-in" data-skill="react.js">
+                            <img src="images/react.png" alt="React.js"  loading="lazy" decoding="async" />
+                            <span>React.js</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="next.js">
+                            <img src="images/nextjslogo.png" alt="Next.js"  loading="lazy" decoding="async" />
+                            <span>Next.js</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="tailwind css">
+                            <img src="images/taillogo.png" alt="Tailwind CSS"  loading="lazy" decoding="async" />
+                            <span>Tailwind CSS</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="html">
+                            <img src="images/htmllogo.png" alt="HTML5"  loading="lazy" decoding="async" />
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="css">
+                            <img src="images/csslogo.png" alt="CSS3"  loading="lazy" decoding="async" />
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="javascript">
+                            <img src="images/jslogo.png" alt="JavaScript"  loading="lazy" decoding="async" />
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category fade-in">
+                    <h3>Backend & Database</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card fade-in" data-skill="firebase">
+                            <img src="images/firebase.png" alt="Firebase"  loading="lazy" decoding="async" />
+                            <span>Firebase</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="mysql">
+                            <img src="images/mysqllogo.png" alt="MySQL"  loading="lazy" decoding="async" />
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category fade-in">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card fade-in" data-skill="java">
+                            <img src="images/javalogo.png" alt="Java"  loading="lazy" decoding="async" />
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="python">
+                            <img src="images/pythonlogo.webp" alt="Python"  loading="lazy" decoding="async" />
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-card fade-in" data-skill="c">
+                            <img src="images/clogo.png" alt="C"  loading="lazy" decoding="async" />
+                            <span>C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category fade-in">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card fade-in" data-skill="aws">
+                            <img src="images/awslogo.png" alt="AWS"  loading="lazy" decoding="async" />
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="svg-divider bottom-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title fade-in"><span>Featured Projects</span></h2>
+
+                <div class="projects-filter fade-in">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                    <button class="filter-btn" data-filter="desktop">Desktop</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX</button>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card fade-in" id="srms-project" data-category="web">
+                        <div class="project-slider">
+                            <div class="project-slider-inner">
+                                <img src="images/SRMS1.png" alt="LOGIN"  loading="lazy" decoding="async" />
+                                <img src="images/SRMS2.png" alt="DASHBOARD"  loading="lazy" decoding="async" />
+                                <img src="images/SRMS3.png" alt="CREATE STUDENT CLASS"  loading="lazy" decoding="async" />
+                                <img src="images/SRMS4.png" alt="MANAGE CLASSES"  loading="lazy" decoding="async" />
+                                <img src="images/SRMS5.png" alt="MANAGE STUDENTS"  loading="lazy" decoding="async" />
+                                <img src="images/SRMS6.png" alt="STUDENT RESULT MANAGEMENT SYSTEM"  loading="lazy" decoding="async" />
+                                <img src="images/SRMS7.png" alt="STUDENT RESULT"  loading="lazy" decoding="async" />
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-prev" title="Previous slide" aria-label="Previous slide">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="slider-next" title="Next slide" aria-label="Next slide">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="slider-dots"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>STUDENT RESULT MANAGEMENT SYSTEM</h3>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>PHP</span>
+                                <span>CSS</span>
+                                <span>JAVASCRIPT</span>
+                            </div>
+                            <p>
+                                A Student Result Management System is a software application that efficiently records, processes, and displays student academic results, ensuring accurate and organized performance tracking.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://github.com/AnishAntil/StudentResult" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <button class="btn-link" data-project="srms-project">
+                                    <i class="fas fa-images"></i> View Gallery
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in" id="breakout-game" data-category="desktop">
+                        <div class="project-slider">
+                            <div class="project-slider-inner">
+                                <img src="images/BBG4.jpg" alt="BREAK OUT BALL GAME"  loading="lazy" decoding="async" />
+                                <img src="images/BBG1.jpg" alt="Game START"  loading="lazy" decoding="async" />
+                                <img src="images/BBG2.jpg" alt="ONGOING"  loading="lazy" decoding="async" />
+                                <img src="images/BBG3.jpg" alt="ONGOING"  loading="lazy" decoding="async" />
+                                <img src="images/BBG5.jpg" alt="ER MODEL"  loading="lazy" decoding="async" />
+                                <img src="images/BBG6.jpg" alt="GAME OVER"  loading="lazy" decoding="async" />
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-prev" title="Previous slide" aria-label="Previous slide">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="slider-next" title="Next slide" aria-label="Next slide">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="slider-dots"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>BREAK OUT BALL GAME</h3>
+                            <div class="project-tags">
+                                <span>Java</span>
+                                <span>Swing</span>
+                                <span>Desktop</span>
+                            </div>
+                            <p>
+                                Breakout is a classic arcade game where players control a paddle to bounce a ball and break bricks.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://github.com/AnishAntil/Brick_Breaker_Game" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <button class="btn-link" data-project="breakout-game">
+                                    <i class="fas fa-images"></i> View Gallery
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in" id="note-app" data-category="desktop">
+                        <div class="project-slider">
+                            <div class="project-slider-inner">
+                                <img src="images/AN1.png" alt="NoteApp Interface"  loading="lazy" decoding="async" />
+                                <img src="images/AN2.png" alt="Tags Feature"  loading="lazy" decoding="async" />
+                                <img src="images/AN3.png" alt="NoteApp Features"  loading="lazy" decoding="async" />
+                                <img src="images/AN4.png" alt="Example"  loading="lazy" decoding="async" />
+                                <img src="images/AN5.png" alt="Notes Created"  loading="lazy" decoding="async" />
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-prev" title="Previous slide" aria-label="Previous slide">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="slider-next" title="Next slide" aria-label="Next slide">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="slider-dots"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Advanced Notes App</h3>
+                            <div class="project-tags">
+                                <span>Java</span>
+                                <span>Swing</span>
+                                <span>Desktop App</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        <p>
+                            A modern, smooth, and feature-rich note-taking web application built with vanilla HTML, CSS, and JavaScript. It includes a responsive UI, dark mode, rich-text editing, and a powerful search with live suggestions.
+                        </p>
+                            <div class="project-links">
+                                <a href="https://advanced-notes-app-pi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/AnishAntil/Advanced-Notes-App" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <button class="btn-link" data-project="note-app">
+                                    <i class="fas fa-images"></i> View Gallery
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in" id="todo-app" data-category="web">
+                        <div class="project-slider">
+                            <div class="project-slider-inner">
+                                <img src="images/TDL1.png" alt="TO-DO List Login Page"  loading="lazy" decoding="async" />
+                                <img src="images/TDL2.png" alt="TO-DO List"  loading="lazy" decoding="async" />
+                                <img src="images/TDL3.png" alt="TO-DO List Active Task"  loading="lazy" decoding="async" />
+                                <img src="images/TDL4.png" alt="TO-DO List Completed Task"  loading="lazy" decoding="async" />
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-prev" aria-label="Previous slide"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                                <button class="slider-next" aria-label="Next slide"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="slider-dots"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>TastyBites Ordering Platform</h3>
+                            <div class="project-tags">
+                                <span>Next.js</span>
+                                <span>React.js</span>
+                                <span>Tailwind CSS</span>
+                                <span>Firebase</span>
+                            </div>
+                            <p>
+                                A secure, end-to-end food delivery web application leveraging persistent database structures and customized anonymous verification filters to drive micro-order completions seamlessly.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://my-todo-app-kappa-hazel.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/AnishAntil/my-todo-app" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <button class="btn-link" data-project="todo-app">
+                                    <i class="fas fa-images"></i> View Gallery
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in" id="ordering-app" data-category="ui">
+                        <div class="project-slider">
+                            <div class="project-slider-inner">
+                                <img src="images/FOA1.png" alt="Food ordering application 1"  loading="lazy" decoding="async" />
+                                <img src="images/FOA2.png" alt="Interactive UI Sample 2"  loading="lazy" decoding="async" />
+                                <img src="images/FOA3.png" alt="Interactive UI Sample 2"  loading="lazy" decoding="async" />
+                                <img src="images/FOA4.png" alt="Interactive UI Sample 2"  loading="lazy" decoding="async" />
+                                <img src="images/FOA5.png" alt="Interactive UI Sample 2"  loading="lazy" decoding="async" />
+                            </div>
+                            <div class="slider-controls">
+                                <button class="slider-prev" aria-label="Previous slide">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="slider-next" aria-label="Next slide">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="slider-dots"></div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Food Ordering Application</h3>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>UI/UX</span>
+                            </div>
+                            <p>
+                                A collection of modern and interactive UI components designed to enhance user experience. Includes custom sliders, buttons, and form elements.
+                            </p>
+                            <div class="project-links">
+                                <a href="https://anishantil-tastybites.lovable.app" class="btn-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/AnishAntil/Interactive-UI-components" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                                <button class="btn-link" data-project="ordering-app">
+                                    <i class="fas fa-images"></i> View Gallery
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="view-more-container fade-in">
+                    <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" class="btn-primary magnetic-btn">
+                        View More on GitHub <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div id="projectGalleryModal" class="project-gallery-modal">
+            <div class="gallery-modal-content">
+                <span class="gallery-close">&times;</span>
+                <h3 class="gallery-title">Project Gallery</h3>
+                <div class="gallery-container"></div>
+                <div class="gallery-navigation">
+                    <button class="gallery-prev" aria-label="Previous image">
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    </button>
+                    <div class="gallery-dots"></div>
+                    <button class="gallery-next" aria-label="Next image">
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <section class="timeline-section" id="education">
+            <div class="svg-divider top-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+            <div class="container">
+                <h2 class="section-title fade-in"><span>Education & Experience</span></h2>
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>B.Tech in Computer Science Engineering</h3>
+                            <h4>SRM University, Delhi NCR - Sonipat, Haryana</h4>
+                            <p class="timeline-date">2022-2026 (pursuing)</p>
+                            <p>
+                                Relevant coursework: Data Structures, Algorithms, Web Development, Cloud Computing
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Frontend Developer Intern</h3>
+                            <h4>CodeAlpha</h4>
+                            <p class="timeline-date">August 2024 - September 2024</p>
+                            <p>
+                                Developed responsive web applications and collaborated with remote team using agile methodologies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>SRM BUILDS 5.0 X FINTECH</h3>
+                            <h4>CIIE, SRM University</h4>
+                            <p class="timeline-date">July 2024</p>
+                            <p>
+                                Led a team to develop a financial technology solution within 24 hours using Next.js and Firebase.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Web Development Training</h3>
+                            <p>"Completed a comprehensive web development training program at Infosys, gaining hands-on expertise in building full-stack applications. The curriculum provided a strong foundation in core technologies such as HTML, CSS, JavaScript, and Java, with a focus on real-world, project-based application development."</p>
+                            <p class="timeline-date">July 2024 - August 2024</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>CBSE Senior Secondary</h3>
+                            <h4>South Point Public School</h4>
+                            <p class="timeline-date">2021-2022</p>
+                            <p>Scored 86.4%</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>CBSE Secondary</h3>
+                            <h4>South Point World School</h4>
+                            <p class="timeline-date">2019-2020</p>
+                            <p>Scored 63.8%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="svg-divider bottom-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2 class="section-title fade-in"><span>Get In Touch</span></h2>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item fade-in">
+                            <div class="contact-icon-wrapper">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                  <h3>Email</h3>
+                                <p><a href="mailto:anishantil01@gmail.com">anishantil01@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item fade-in">
+                            <div class="contact-icon-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Sonipat, Haryana, India</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links-modern fade-in">
+                            <a href="https://www.linkedin.com/in/anish-kumar-57a538356/" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/anish_antil/" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                            <a href="https://leetcode.com/u/AnishAntil/" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="LeetCode Profile"><img src="images/leet.webp" alt="LeetCode" class="leetcode-icon"  loading="lazy" decoding="async" /></a>
+                            <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer" class="social-icon magnetic-btn" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form fade-in" id="contactForm">
+                        <form action="https://formsubmit.co/anishantil01@gmail.com" method="POST" autocomplete="off">
+                            <input type="hidden" name="_captcha" value="false" />
+                            
+                            <div class="form-group-modern">
+                                <input type="text" id="name" name="name" required placeholder=" " />
+                                <label for="name">Your Name</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            
+                            <div class="form-group-modern">
+                                <input type="email" id="email" name="email" required placeholder=" " />
+                                <label for="email">Your Email</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            
+                            <div class="form-group-modern">
+                                <input type="text" id="subject" name="subject" required placeholder=" " />
+                                <label for="subject">Subject</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            
+                            <div class="form-group-modern">
+                                <textarea id="message" name="message" required placeholder=" "></textarea>
+                                <label for="message">Your Message</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit-modern magnetic-btn">
+                                <span class="btn-text">Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="modern-footer">
+            <div class="footer-top-divider"></div>
+            <div class="container footer-container">
+                
+                <div class="footer-column brand-col">
+                    <div class="logo">AK</div>
+                    <p class="footer-description">
+                        Crafting clean, efficient, and user-centric web applications from the ground up. Let's build something exceptional.
+                    </p>
+                    <div class="footer-status-badge">
+                        <span class="pulse-dot"></span>
+                        <span class="status-text">SYSTEMS OPERATIONAL // 2026</span>
+                    </div>
+                </div>
+
+                <div class="footer-column links-col">
+                    <h3>Quick Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-terminal"></i> About</a></li>
+                        <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+                        <li><a href="#projects"><i class="fas fa-layer-group"></i> Projects</a></li>
+                        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Timeline</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column tech-col">
+                    <h3>Built With</h3>
+                    <div class="tech-tags-container">
+                        <span class="tech-tag"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="tech-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="tech-tag"><i class="fab fa-js"></i> ES6+</span>
+                        <span class="tech-tag"><i class="fas fa-bolt"></i> Vercel</span>
+                    </div>
+                    <div class="encryption-notice">
+                        <i class="fas fa-lock"></i> Secure Connection Enabled
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container bottom-wrapper">
+                    <p class="copyright-text">&copy; 2026 Anish. Crafted with passion.</p>
+                    <div class="footer-meta-links">
+                        <a href="https://github.com/AnishAntil" target="_blank" rel="noopener noreferrer">Open Source Core</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a href="https://wa.me/917988252001" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <button id="backToTopBtn" title="Go to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
